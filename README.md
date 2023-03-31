@@ -24,7 +24,7 @@ Then import the `MessageBatcher` class:
 import { MessageBatcher } from '@raphaabreu/message-batcher';
 ```
 
-## Creating a MessageBatcher instance
+### Creating a MessageBatcher instance
 
 To create a new MessageBatcher instance, you need to specify the batchSize and a callback function. The batchSize determines the maximum number of messages that can be processed in one batch. The callback function is called with an array of messages when the batch is ready to be processed.
 
@@ -37,7 +37,7 @@ const callback = async (messages: string[]) => {
 const messageBatcher = new MessageBatcher<string>(batchSize, callback);
 ```
 
-## Adding messages
+### Adding messages
 
 You can add messages to the queue using the `add` method:
 
@@ -48,7 +48,7 @@ messageBatcher.add(['message2', 'message3']);
 
 The `add` method accepts a single message or an array of messages.
 
-## Starting the interval timer
+### Starting the interval timer
 
 To start the interval timer, call the `start` method and pass the `maxBatchIntervalMs` parameter:
 
@@ -59,7 +59,7 @@ messageBatcher.start(maxBatchIntervalMs);
 
 The `maxBatchIntervalMs` determines the maximum interval between message batch processing.
 
-## Stopping the interval timer
+### Stopping the interval timer
 
 To stop the interval timer, call the `stop` method:
 
@@ -67,7 +67,7 @@ To stop the interval timer, call the `stop` method:
 messageBatcher.stop();
 ```
 
-## Stopping the interval timer and flushing remaining messages
+### Stopping the interval timer and flushing remaining messages
 
 To stop the interval timer and flush any remaining messages in the queue, call the `stopAndFlush` method:
 
@@ -75,7 +75,7 @@ To stop the interval timer and flush any remaining messages in the queue, call t
 await messageBatcher.stopAndFlush();
 ```
 
-## Flushing messages manually
+### Flushing messages manually
 
 You can also manually flush messages using the `flush` method:
 
