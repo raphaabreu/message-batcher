@@ -39,29 +39,29 @@ const messageBatcher = new MessageBatcher<string>(batchSize, callback);
 
 ## Adding messages
 
-You can add messages to the queue using the add method:
+You can add messages to the queue using the `add` method:
 
 ```typescript
 messageBatcher.add('message1');
 messageBatcher.add(['message2', 'message3']);
 ```
 
-The add method accepts a single message or an array of messages.
+The `add` method accepts a single message or an array of messages.
 
 ## Starting the interval timer
 
-To start the interval timer, call the start method and pass the maxBatchIntervalMs parameter:
+To start the interval timer, call the `start` method and pass the `maxBatchIntervalMs` parameter:
 
 ```typescript
 const maxBatchIntervalMs = 10000; // 10 seconds
 messageBatcher.start(maxBatchIntervalMs);
 ```
 
-The maxBatchIntervalMs determines the maximum interval between message batch processing.
+The `maxBatchIntervalMs` determines the maximum interval between message batch processing.
 
 ## Stopping the interval timer
 
-To stop the interval timer, call the stop method:
+To stop the interval timer, call the `stop` method:
 
 ```typescript
 messageBatcher.stop();
@@ -69,7 +69,7 @@ messageBatcher.stop();
 
 ## Stopping the interval timer and flushing remaining messages
 
-To stop the interval timer and flush any remaining messages in the queue, call the stopAndFlush method:
+To stop the interval timer and flush any remaining messages in the queue, call the `stopAndFlush` method:
 
 ```typescript
 await messageBatcher.stopAndFlush();
@@ -77,7 +77,7 @@ await messageBatcher.stopAndFlush();
 
 ## Flushing messages manually
 
-You can also manually flush messages using the flush method:
+You can also manually flush messages using the `flush` method:
 
 ```typescript
 await messageBatcher.flush();
