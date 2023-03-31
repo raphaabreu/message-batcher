@@ -12,10 +12,16 @@ The `MessageBatcher` class is a utility that helps you batch messages and proces
 
 ## Usage
 
-First, import the `MessageBatcher` class:
+First, install the package:
+
+```bash
+npm i @raphaabreu/message-batcher
+```
+
+Then import the `MessageBatcher` class:
 
 ```typescript
-import { MessageBatcher } from './MessageBatcher';
+import { MessageBatcher } from '@raphaabreu/message-batcher';
 ```
 
 ## Creating a MessageBatcher instance
