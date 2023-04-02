@@ -15,6 +15,25 @@ export class MessageBatcher<T> {
     }
   }
 
+  public static batch<T>(message: T | T[], batchSize: number): T[][] {
+    if (!batchSize) {
+      throw new Error('size is required');
+    }
+    if (!(batchSize > 0)) {
+      throw new Error('size must be positive');
+    }
+
+    const asArray = Array.isArray(message) ? message : [message];
+
+    const batches: T[][] = [];
+    for (let i = 0; i < asArray.length; i += batchSize) {
+      const batch = asArray.slice(i, i + batchSize);
+      batches.push(batch);
+    }
+
+    return batches;
+  }
+
   public start(maxBatchIntervalMs = 10000): void {
     if (!maxBatchIntervalMs) {
       throw new Error('maxBatchIntervalMs is required');
