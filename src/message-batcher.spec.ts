@@ -80,7 +80,7 @@ describe('MessageBatcher', () => {
 
   describe('batch', () => {
     test('should return an empty array if message is empty', () => {
-      const batchSize = 3;
+      // Arrange
 
       // Act
       const result = MessageBatcher.batch([], batchSize);
@@ -91,29 +91,36 @@ describe('MessageBatcher', () => {
 
     test('should return a batch array if message length is less than or equal to batch size', () => {
       // Arrange
-      const batchSize = 3;
-      const message = ['1', '2'];
 
       // Act
-      const result = MessageBatcher.batch(message, batchSize);
+      const result = MessageBatcher.batch(threeMessages, batchSize);
 
       // Assert
-      expect(result).toEqual([['1', '2']]);
+      expect(result).toEqual([['msg1', 'msg2', 'msg3']]);
     });
 
     test('should return multiple batches if message length is greater than batch size', () => {
       // Arrange
-      const batchSize = 3;
-      const message = ['1', '2', '3', '4', '5'];
 
       // Act
-      const result = MessageBatcher.batch(message, batchSize);
+      const result = MessageBatcher.batch(eightMessages, batchSize);
 
       // Assert
       expect(result).toEqual([
-        ['1', '2', '3'],
-        ['4', '5'],
+        ['msg1', 'msg2', 'msg3', 'msg4', 'msg5'],
+        ['msg6', 'msg7', 'msg8'],
       ]);
+    });
+
+    test('should handle both single message and array of messages', () => {
+      // Arrange
+      const singleMessage = 'msg1';
+
+      // Act
+      const result = MessageBatcher.batch(singleMessage, batchSize);
+
+      // Assert
+      expect(result).toEqual([['msg1']]);
     });
 
     test('should throw an error if size is not provided', () => {
